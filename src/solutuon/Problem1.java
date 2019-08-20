@@ -1,4 +1,4 @@
-package solution;
+package solutuon;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ public class Problem1 {
             if (i % 3 == 0 || i % 5 == 0){
                 sum += i;
             }
-            System.out.println(sum);
         }
+        System.out.println(sum);
     }
 }
