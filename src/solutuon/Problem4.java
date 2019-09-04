@@ -2,7 +2,7 @@ package solutuon;
 
 public class Problem4 {
     public static void main(String[] args) {
-
+        long begin = System.currentTimeMillis();
         int max  = 0;
         for (int i = 100; i < 999 ; i++) {
             for (int j = 100; j < 999; j++) {
@@ -13,6 +13,8 @@ public class Problem4 {
                 }
             }
         }
+        long end = System.currentTimeMillis();
+        System.out.println(end - begin);
         System.out.println(max);
 
     }

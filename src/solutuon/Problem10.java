@@ -1,7 +1,5 @@
 package solutuon;
 
-import java.util.Arrays;
-
 public class Problem10 {
     public static void main(String[] args) {
         boolean[] a = new boolean[2000000];
