@@ -16,6 +16,4 @@ public class Problem8 {
         }
         System.out.println(max);
     }
-
-
 }

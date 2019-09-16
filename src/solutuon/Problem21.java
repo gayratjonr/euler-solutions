@@ -1,35 +1,29 @@
 package solutuon;
 
-import java.io.*;
-import java.util.*;
-
 public class Problem21 {
-    public static void main(String[] args) throws IOException {
-        File f = new File("file/name.txt");
-        long time = System.nanoTime();
-
-        String[] names = readFirstLine(f).split(",");
-        Arrays.sort(names);
-
-        int total = 0;
-        for (int i = 0; i < names.length; i++) {
-            total += (i + 1) * letterSum(names[i]);
-        }
-        System.out.println(total);
-    }
-
-    private static int letterSum(String s) {
+    public static void main(String[] args) {
         int sum = 0;
-        for (char c : s.toCharArray()) {
-            if (Character.isUpperCase(c)) {
-                sum += c - ('A' - 1);
+        for (int i = 2; i < 10000; i++) {
+            int firstNumber = sumOfDivisor(i);
+            int secondNumber = sumOfDivisor(firstNumber);
+            if (secondNumber == i && i < firstNumber) {
+                sum += firstNumber + i;
             }
         }
-        return sum;
+        System.out.println(sum);
     }
-    private static String readFirstLine(File f) throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
-            return br.readLine();
+
+    private static int sumOfDivisor(int number) {
+        int sum = 0;
+        int sqrtNUmber = (int) Math.sqrt(number);
+        for (int j = 1; j <= sqrtNUmber; j++) {
+            if (number % j == 0) {
+                sum += (j + number / j);
+            }
+            if (sqrtNUmber * sqrtNUmber == number) {
+                sum -= sqrtNUmber;
+            }
         }
+        return sum - number;
     }
 }
