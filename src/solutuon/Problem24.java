@@ -1,43 +1,26 @@
 package solutuon;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Problem24 {
+    static ArrayList<String> numbers = new ArrayList<>();
     public static void main(String[] args) {
-        int sum = 0;
-        List<Integer> primes = getPrimeList();
-        for (int i = 999999999; i > 899999999; i--) {
-            if (isPadigit("" +i)){
+        permutations("0123456789", "");
+        System.out.println(numbers.get(999999));
 
-            }
-        }
     }
 
-    private static boolean isPadigit(String number) {
-        for (int i = 0; i <= number.length(); i++) {
-            if (!number.contains("" + i)) {
-                return false;
-            }
+    public static void permutations(String temp, String result) {
+        if (temp.length() == 0) {
+            numbers.add(result);
+            return;
         }
-        return true;
-    }
 
-    private static List<Integer> getPrimeList() {
-        List<Integer> primeList = new ArrayList<>();
-        boolean[] a = new boolean[100];
-        Arrays.fill(a, true);
-        for (int i = 2; i < 100; i++) {
-            for (int j = i + i; j < 100; j += i) {
-                a[j] = false;
-            }
+        for (int index = 0; index < temp.length(); index++) {
+            char c = temp.charAt(index);
+            String sub = temp.substring(0, index) + temp.substring(index + 1);
+            System.out.println(sub);
+            permutations(sub, result + c);
         }
-        for (int i = 0; i <100 ; i++) {
-            if (a[i]){
-                primeList.add(i);
-            }
-        }
-        return primeList;
     }
 }
